@@ -1,0 +1,42 @@
+# Install
+
+> How to install, build, and run our software and download our data
+
+## Download Data
+
+To download all of our data used in our paper (including the HFTorrent dataset), you will need to use `git lfs` to clone our repository.
+
+Please execute:
+
+`git lfs clone https://github.com/icse2023ptm/ICSE-23-PTM-Artifact`
+
+The HFTorrent dataset is divided into 19 parts of ~20 GB each.
+Please use an extractor capable of extracting `7z` archives to unpack the dataset.
+
+## Build From Source
+
+The Python code in this repository can be ran as individual scripts, or bundled into a package to be installed on your local machine.
+
+We utlized the `poetry` build tool to create Python packages of our code.
+
+Install `poetry` with:
+
+`pip install poetry`
+
+Then execute (within the top level of the source code):
+
+`poetry build` 
+
+From there, you can utilize `pip` to install a `.whl` or `.tar.gz` Python package from the newly created `dist` directory.
+
+## Install Precompiled Package
+
+We published precompiled packages of our tools through this repositories GitHub releases page.
+
+You can install the `.whl` version of our project with
+
+`pip install https://github.com/icse2023ptm/ICSE-23-PTM-Artifact/releases/download/0.1.1/icse-23-model_hub_artifact-0.1.1.tar.gz`
+
+You can install the `.tar.gz` version of our project with
+
+`pip install https://github.com/icse2023ptm/ICSE-23-PTM-Artifact/releases/download/0.1.1/icse-23-model_hub_artifact-0.1.1.tar.gz`

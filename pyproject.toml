@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "icse-23-model_hub_artifact"
+authors = []
+version = "0.1.0"
+description = "Code artifacts for ICSE 2023 "
+license = "Apache 2.0"
+
+[tool.poetry.dependencies]
+python = ">=3.8, <3.11"
+torch = "^1.12.1"
+torchvision = "^0.13.1"
+matplotlib = "^3.5.3"
+requests = "^2.28.1"
+tqdm = "^4.64.0"
+transformers = "^4.21.2"
+datasets = "^2.4.0"
+opencv-python = "^4.6.0"
+torchmetrics = "^0.9.3"
+timm = "^0.6.7"
+huggingface-hub = "^0.9.1"
+progress = "^1.6"
+bs4 = "^0.0.1"
+lxml = "^4.9.1"
+numpy = "^1.23.2"
+tensorflow = "^2.9.1"
+torchaudio = "^0.12.1"
+pandas = "^1.4.3"
+
+[tool.poetry.dev-dependencies]
+pynvim = "^0.4.3"
+black = "^22.6.0"
+isort = "^5.10.1"
+autoflake = "^1.5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+icse-download-model-information = "icse_23_model_hub_artifact.downloadModelInformation.main:main"
+icse-extract-model-names = "icse_23_model_hub_artifact.downloadHFTorrent.extractRepoNames:main"
+icse-extract-model-downloads = "icse_23_model_hub_artifact.modelDownloadSaver.main:main"
+icse-plot-model-downloads = "icse_23_model_hub_artifact.modelDownloadSaver.plot:main"
+icse-download-malware-html = "icse_23_model_hub_artifact.downloadHTML.downloadMalwareHTML:main"
+icse-download-organization-list = "icse_23_model_hub_artifact.downloadHTML.downloadOrganizationList:main"
+icse-scan-for-malware = "icse_23_model_hub_artifact.malwareScanning.main:main"
+icse-measure-repos-with-signed-commits = "icse_23_model_hub_artifact.measureRepositoriesWithSignedCommits.main:main"
+icse-measure-verified-organizations = "icse_23_model_hub_artifact.measureVerifiedOrganizations.main:main"
+ 

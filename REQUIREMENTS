@@ -1,0 +1,11 @@
+# Requirements
+
+This project utilizes `Python 3.10.4` features.
+
+The `poetry` build system was used to handle setup of virtual environments and building the Python release packages.
+
+Additionally, there is a `requirements.txt` file containing the dependencies.
+
+Shell scripts are written targetting the `bash` shell.
+
+`GNU parallel` is used within shell scripts.
