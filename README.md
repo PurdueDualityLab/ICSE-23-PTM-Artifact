@@ -7,7 +7,7 @@
 This repository contains all of the artifacts for the ICSE 2023 conference.
 
 We provide all *code* to collect data, analyze data, and generate charts for our paper in the [icse_23_model_hub_artifact](icse_23_model_hub_artifact/) folder. 
-We have provided an installation package for our `Python` code made availible in our repositoriy's release section.
+We have provided an installation package for our `Python` code made availible in our repository's release section.
 Helper bash scripts are also provided to assist with executing our code for batch jobs.
 For instructions on how to build our code from source or to download and install the precompiled package, see the [INSTALL](INSTALL) file for more details.
 We discuss how to reproduce our results in the [Reproduce Results](#reproduce-results) section of this document.
