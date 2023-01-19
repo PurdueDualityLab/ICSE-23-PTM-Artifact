@@ -1,6 +1,6 @@
 # ICSE'23 Artifact
 
-> This is the artifact abstract for the ICSE'23 paper: An Empirical Study of Pre-Trained Model Reuse in the Hugging Face Deep Learning Model Registry
+> This is the artifact for the ICSE'23 paper: An Empirical Study of Pre-Trained Model Reuse in the Hugging Face Deep Learning Model Registry
 
 ## About
 
