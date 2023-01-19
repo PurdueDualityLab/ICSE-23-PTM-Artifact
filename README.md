@@ -1,7 +1,7 @@
-# ICSE 2023 Artifact Repository
+# ICSE'23 Artifact
 
-> Artifact repository for the ICSE 2023 confrence
-
+> This is the artifact abstract for the ICSE'23 paper: An Empirical Study of Pre-Trained Model Reuse in the Hugging Face Deep Learning Model Registry
+> 
 ## Changes Made on 1/4/2022
 
 1. An unzipped version of the interview artifact (stored within the repository at [`./data/Interview Study.zip`](data/Interview&#32;Study.zip) is now availible within this repository at [`./interview_study/`](interview_study/).
@@ -10,8 +10,7 @@
 
 ## About
 
-This repository contains all of the artifacts for the ICSE 2023 confrence.
-An attempt has been made to anonymize this repository for the initial submission of our paper.
+This repository contains all of the artifacts for the ICSE 2023 conference.
 
 We provide all *code* to collect data, analyze data, and generate charts for our paper in the [icse_23_model_hub_artifact](icse_23_model_hub_artifact/) folder. 
 We have provided an installation package for our `Python` code made availible in our repositoriy's release section.
@@ -38,7 +37,7 @@ The [Citaitons](#citations) section of this document contains citations for tool
 ## HFTorrent Dataset
 
 The HFTorrent dataset contains the repository histories of the 63,182 PTM packages available on Hugging Face as of August 2022.
-They are provided as bare git clones (`git clone --bar`) to reduce space, resulting in a compressed footprint of ~20 GB. 
+They are provided as bare git clones (`git clone --bare`) to reduce space, resulting in a compressed footprint of ~20 GB. 
 Each PTM package can be reconstructed to its most recent version, including the model card, architecture, weights, and other elements provided by the maintainers.
 Information about how to download the dataset and how to extract it can be found in the [INSTALL](INSTALL) document.
 
