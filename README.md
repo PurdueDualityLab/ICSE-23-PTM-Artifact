@@ -1,12 +1,6 @@
 # ICSE'23 Artifact
 
 > This is the artifact abstract for the ICSE'23 paper: An Empirical Study of Pre-Trained Model Reuse in the Hugging Face Deep Learning Model Registry
-> 
-## Changes Made on 1/4/2022
-
-1. An unzipped version of the interview artifact (stored within the repository at [`./data/Interview Study.zip`](data/Interview&#32;Study.zip) is now availible within this repository at [`./interview_study/`](interview_study/).
-2. Within the [`./interview_study/`](interview_study/) directory is a new file ([`InterviewSaturation.ipynb`](interview_study/InterviewSaturation.ipynb)) which was used to calculate the interview saturation.
-3. Formatting (Removal of additional blank lines) to this [`README.md`](README.md) document and the addition of the this section.
 
 ## About
 
@@ -25,7 +19,7 @@ For information on how to utilize it locally, see the [INSTALL](INSTALL) file fo
 The [Citaitons](#citations) section of this document contains citations for tools used in this repository.
 
 ## Interview Protocol and Data
- This folder includes:
+ This [folder](interview_study) includes:
  - The interview protocol, including interview questions.
    - All the interviews are semi-structured.
  - The demographic data of 12 participants.
