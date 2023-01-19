@@ -2,5 +2,14 @@
 <!-- A STATUS file stating what kind of badge(s) the authors are applying for as well as the reasons why the authors believe that the artifact deserves that badge(s).
 
  -->
+We are claiming the following two badges
+-  #### Available
+   -  We provide all of our *code* and *scripts* for data collection, analysis and chart generation.
+   - We have provided an installation package for our `Python` code made availible in our repositoriy's release section.
+   - Helper bash scripts are also provided to assist with executing our code for batch jobs.
+   - For instructions on how to build our code from source or to download and install the precompiled package, see the [INSTALL](INSTALL) file for more details.
+   - We discuss how to reproduce our results in the [Reproduce Results](#reproduce-results) section of this document.
 
-We apply for 
+-  #### Reusable
+   -  The *code* and *scripts* are availabe and reusable if anyone would like to re-collect and re-analyze the data.
+   -  The *interview protocol* and *interview data* are all available. Future studies can reuse the *interview protocol* in similar studies, or reuse the *interview data* to answer different research questions.
