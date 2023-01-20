@@ -164,7 +164,7 @@ options:
                         Output .txt file to store verified organization URLs
 ```
 
-## Citations
+## Code we relied on
 
 - GNU Parallel
 ```
