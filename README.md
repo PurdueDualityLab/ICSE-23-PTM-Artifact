@@ -14,6 +14,7 @@ Our artifact includes the following (ordered by sections):
 | Interview_study | Interview protocol, demographic data, transcripts, framework analysis, and saturation calculation | Section IV.A | | First interview study on Pre-trained model (PTM) reuse |
 | Risk measurement | Measurements of potential risks in Hugging Face | Section VIII, especially Figure 6 and 7 | | First measurements on potential risks in PTM registries|
 | HFTorrent Dataset | A dataset for 63,182 open-source PTM packages from Hugging Face model hub | Section IX | First snapshot of PTM packages | |
+| HFTorrent Scripts | The scripts to download HFTorrent from Hugging Face| Section IX | | |
 
 
 We provide all *code* to collect data, analyze data, and generate charts for our paper in the [icse_23_model_hub_artifact](icse_23_model_hub_artifact/) folder. 
