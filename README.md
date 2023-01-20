@@ -4,9 +4,11 @@
 
 ## About
 
-This repository contains all of the artifacts for the ICSE 2023 conference.
+This repository contains all of the elements of the paper.
 
-Our artifact includes the following (ordered by sections):
+### Paper-view
+
+Our artifact includes the following (ordered by appearance in the paper):
 
 | Item | Description | Corresponding content in the paper | Scientific interest | Relation to prior work |
 |------|-------------|---------------------|------------------------------------|------------------------|
@@ -15,7 +17,6 @@ Our artifact includes the following (ordered by sections):
 | Risk measurement | Measurements of potential risks in Hugging Face | Section VIII, especially Figure 6 and 7 | | First measurements on potential risks in PTM registries|
 | HFTorrent Dataset | A dataset for 63,182 open-source PTM packages from Hugging Face model hub | Section IX | First snapshot of PTM packages | |
 | HFTorrent Scripts | The scripts to download HFTorrent from Hugging Face| Section IX | | |
-
 
 We provide all *code* to collect data, analyze data, and generate charts for our paper in the [icse_23_model_hub_artifact](icse_23_model_hub_artifact/) folder. 
 We have provided an installation package for our `Python` code made availible in our repository's release section.
@@ -27,17 +28,27 @@ We provide all *data* (both collected for analysis and used for graphing data) f
 Additionally, we provide the [HFTorrent Dataset](#hftorrent-dataset) within this repository from August 15th under [this](data/hftorrent_8-15-2022/HFTorrent) subdirectory of the [data](data/) folder.
 For information on how to utilize it locally, see the [INSTALL](INSTALL) file for more details.
 
-The [Citaitons](#citations) section of this document contains citations for tools used in this repository.
+### Repo-view
+
+The next table describes the "table of contents" for this repository.
+
+| Top-level folder | Description |
+|------------------|-------------|
+| `data/`            | XXX         |
+| `icse_23_model_hub_artifact/` | XXX |
+| `interview_study/` | XXX |
+| `reproducibility/` | XXX |
+
+There are READMEs within each top-level folder for further information.
 
 ## Interview Protocol and Data
  This [folder](interview_study) includes:
  - The interview protocol, including interview questions.
-   - All the interviews are semi-structured.
+ - All the interviews are semi-structured.
  - The demographic data of 12 participants.
  - The transcripts of 12 interviews.
  - The memos we created for analysis.
-  - The transcription was performed automatically by service from [Rev](https://www.rev.com/).
-
+ - The transcription was performed automatically by service from [Rev](https://www.rev.com/).
 
 ## HFTorrent Dataset
 
@@ -48,13 +59,16 @@ Information about how to download the dataset and how to extract it can be found
 
 ## Reproduce Results
 
-It is possible to reproduce the results reported in our paper.
+We are *not* applying for ACM's "Reproducible" badge, but we have made an effort to promote reproducibility.
 
-To do so, you will need to utilize [Git LFS](https://git-lfs.github.com/) to clone the repository.
+We provided the data used to generate charts for the HuggingFace-related results reported in our paper.
+To independently collect this data yourself, you will need to utilize [Git LFS](https://git-lfs.github.com/) to clone the repository.
 This is because we host a ~20 GB dataset within this repository.
 
+**TODO: Well, not anymore because it costs money. We moved the 20 GB dataset to Zenodo. Update this with the link!**
+
 Additionally, you will need to follow the instructions within the [INSTALL](INSTALL) file to install the tools from source or through a precompiled package.
-We provide the help details of each script in the tool in [Included Scripts](#included-scripts).
+We provide the help details of each script below.
 
 Figures can be generated from the data in the [data](data/) folder manually or through the usage of a script if supported.
 
