@@ -8,4 +8,5 @@ This folder includes
 - Commit signing measurement
 - Verified organization measurement
 - Documentation measurement
+- Scripts we used to get the number of package downloads
 - Scipts we used to generate the figures
