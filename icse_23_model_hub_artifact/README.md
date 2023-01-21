@@ -1,9 +1,11 @@
-# Interview Study (Section IV.A)
+# Scripts (Section I, IV.B)
 
 This folder includes
 
-- Interview protocol
-- Interview transcripts
-- Demographic data
-- Interview memos
-- Calculation of data saturation
+- HFTorrent download scripts
+- Model information download scripts
+- malware scanning scripts
+- Commit signing measurement
+- Verified organization measurement
+- Documentation measurement
+- Scipts we used to generate the figures
