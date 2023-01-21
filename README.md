@@ -34,10 +34,9 @@ The next table describes the "table of contents" for this repository.
 
 | Top-level folder | Description |
 |------------------|-------------|
-| `data/`            | XXX         |
-| `icse_23_model_hub_artifact/` | XXX |
-| `interview_study/` | XXX |
-| `reproducibility/` | XXX |
+| `data/`            | Collected data, including motivation data, HFTorrent, and Hugging Face model informations.         |
+| `icse_23_model_hub_artifact/` | Scripts that download the data and generate the figures in our paper. |
+| `interview_study/` | Interview protocol, transcripts, and analysis |
 
 There are READMEs within each top-level folder for further information.
 
@@ -65,7 +64,7 @@ We provided the data used to generate charts for the HuggingFace-related results
 To independently collect this data yourself, you will need to utilize [Git LFS](https://git-lfs.github.com/) to clone the repository.
 This is because we host a ~20 GB dataset within this repository.
 
-**TODO: Well, not anymore because it costs money. We moved the 20 GB dataset to Zenodo. Update this with the link!**
+**Well, not anymore because it costs money. We moved the 20 GB dataset to Zenodo: https://doi.org/10.5281/zenodo.7556031. To access the raw data, download and place in directory [data](data/), then our scripts should work.**
 
 Additionally, you will need to follow the instructions within the [INSTALL](INSTALL) file to install the tools from source or through a precompiled package.
 We provide the help details of each script below.

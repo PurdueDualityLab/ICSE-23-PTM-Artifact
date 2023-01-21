@@ -1,18 +1,4 @@
-# This is the README
-
-.
-├── README.md
-├── clone.py
-├── data-backup.json
-├── data.json
-├── datasets.json
-├── hf.yaml
-├── ignore.json
-├── main.py
-├── model_dset_tags.png
-├── modelinfo.py
-├── readme_stats.json
-└── transparency.py
+# Motivation
 
 ## clone.py
 
@@ -30,7 +16,7 @@ we ignore those
 
 ## main.py
 
-generated graphs for CISCO ... not used in the ICSE paper i think
+Generate graphs.
 
 ## modelinfo.py
 
