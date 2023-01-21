@@ -10,23 +10,24 @@ This repository contains all of the elements of the paper.
 
 Our artifact includes the following (ordered by appearance in the paper):
 
-| Item | Description | Corresponding content in the paper | Scientific interest | Relation to prior work |
-|------|-------------|---------------------|------------------------------------|------------------------|
-| Motivation | Monthly downloads of the 100 most-downloaded packages from NPM, PyPi, and Hugging Face | Section I, especially Figure 1 | | Compare the popularity of deep learning model registries to traditional package registries|
-| Interview_study | Interview protocol, demographic data, transcripts, framework analysis, and saturation calculation | Section IV.A | | First interview study on Pre-trained model (PTM) reuse |
-| Risk measurement | Measurements of potential risks in Hugging Face | Section VIII, especially Figure 6 and 7 | | First measurements on potential risks in PTM registries|
-| HFTorrent Dataset | A dataset for 63,182 open-source PTM packages from Hugging Face model hub | Section IX | First snapshot of PTM packages | |
-| HFTorrent Scripts | The scripts to download HFTorrent from Hugging Face| Section IX | | |
+| Item | Description | Corresponding content in the paper | Raw data| Scripts/Protocol | Analysis/files to generate figures |Scientific interest | Relation to prior work |
+|------|-------------|---------------------|------|-------|----------|-------------|------------------------|
+| Motivation | Monthly downloads of the 100 most-downloaded packages from NPM, PyPi, and Hugging Face | Section I, especially Figure 1 |data/transformed packages.csv| icse_23_model_hub_artifact/modelDownloadSaver | **TODO**| | Compare the popularity of deep learning model registries to traditional package registries|
+| Interview_study | Interview protocol, demographic data, transcripts, framework analysis, and saturation calculation | Section IV.A | interview_study/Interview Transcripts with Memos, interview_study/Demographic_Data.csv| interview_study/Interview Protocol - PTNN.docx | interview_study/Interview Transcripts with Memos/Memos.xlsx, interview_study/InterviewSaturation.ipynb || First interview study on Pre-trained model (PTM) reuse |
+| Risk measurement | Measurements of potential risks in Hugging Face | Section VIII, especially Figure 6 and 7 | data/modelInformation_8-15-2022.csv, data/fullStratifiedSampleOfModels_8-10-2022.csv |icse_23_model_hub_artifact/downloadHTML, icse_23_model_hub_artifact/downloadModelInformation, icse_23_model_hub_artifact/measureRepositoriesWithSignedCommits, icse_23_model_hub_artifact/measureVerifiedOrganizations, icse_23_model_hub_artifact/modelDocumentation| icse_23_model_hub_artifact/plotData| | First measurements on potential risks in PTM registries|
+| HFTorrent Dataset | A dataset for 63,182 open-source PTM packages from Hugging Face model hub | Section IX |data/hftorrent_8-15-2022|icse_23_model_hub_artifact/downloadHFTorrent|| First snapshot of PTM packages | |
 
 We provide all *code* to collect data, analyze data, and generate charts for our paper in the [icse_23_model_hub_artifact](icse_23_model_hub_artifact/) folder. 
-We have provided an installation package for our `Python` code made availible in our repository's release section.
+<!-- We have provided an installation package for our `Python` code made availible in our repository's release section. -->
 Helper bash scripts are also provided to assist with executing our code for batch jobs.
+
 For instructions on how to build our code from source or to download and install the precompiled package, see the [INSTALL](INSTALL) file for more details.
 We discuss how to reproduce our results in the [Reproduce Results](#reproduce-results) section of this document.
 
 We provide all *data* (both collected for analysis and used for graphing data) for our paper in the [data](data/) folder.
 Additionally, we provide the [HFTorrent Dataset](#hftorrent-dataset) within this repository from August 15th under [this](data/hftorrent_8-15-2022/HFTorrent) subdirectory of the [data](data/) folder.
-For information on how to utilize it locally, see the [INSTALL](INSTALL) file for more details.
+
+  For information on how to utilize it locally, see the [INSTALL](INSTALL) file for more details.
 
 ### Repo-view
 
