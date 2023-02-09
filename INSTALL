@@ -5,6 +5,14 @@
  
 > How to install, build, and run our software and download our data
 
+## VM Image
+
+To help repruduce our results, we published a virtual machine image on Zenodo at the following link: https://doi.org/10.5281/zenodo.7623128.
+
+This Zenodo artifact contains the VM to build, install, and run our software artifacts.
+
+The VM runs on VirtualBox 7 (as recommended by “ICSE Call For Artifact Submissions”) and uses the Open Virtualization Format 2.0.
+
 ## Download Data
 
 To download all of our data used in our paper (including the HFTorrent dataset), you will need to use `git lfs` to clone our repository.
