@@ -13,8 +13,14 @@ def main() -> None:
 
     reposWithSignedCommitsCount: int = 0
     reposWithSignedCommits: list = []
-    dirs: list = next(os.walk("repos"))[1]
 
+    if os.path.isdir(s="repos"):
+        pass
+    else:
+        print("No data from HFTorrent or similar repository availible to analyze. Please create a directory called repos and place the repositories to analyze in it")
+        quit(1)
+
+    dirs: list = next(os.walk("repos"))[1]
     with Bar("Running Commands", max=len(dirs)) as bar:
         dir: str
         for dir in dirs:
