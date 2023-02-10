@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "icse-23-model_hub_artifact"
 authors = []
-version = "0.1.2"
+version = "0.1.3"
 description = "Code artifacts for ICSE 2023 "
 license = "Apache 2.0"
 
