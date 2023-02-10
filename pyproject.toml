@@ -39,11 +39,10 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 icse-download-model-information = "icse_23_model_hub_artifact.downloadModelInformation.main:main"
 icse-extract-model-names = "icse_23_model_hub_artifact.downloadHFTorrent.extractRepoNames:main"
-icse-extract-model-downloads = "icse_23_model_hub_artifact.modelDownloadSaver.main:main"
-icse-plot-model-downloads = "icse_23_model_hub_artifact.modelDownloadSaver.plot:main"
+icse-extract-model-downloads = "icse_23_model_hub_artifact.modelDownloads.main:main"
+icse-plot-model-downloads = "icse_23_model_hub_artifact.modelDownloads.plot:main"
 icse-download-malware-html = "icse_23_model_hub_artifact.downloadHTML.downloadMalwareHTML:main"
 icse-download-organization-list = "icse_23_model_hub_artifact.downloadHTML.downloadOrganizationList:main"
 icse-scan-for-malware = "icse_23_model_hub_artifact.malwareScanning.main:main"
 icse-measure-repos-with-signed-commits = "icse_23_model_hub_artifact.measureRepositoriesWithSignedCommits.main:main"
 icse-measure-verified-organizations = "icse_23_model_hub_artifact.measureVerifiedOrganizations.main:main"
- 
