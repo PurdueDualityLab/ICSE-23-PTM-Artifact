@@ -20,7 +20,12 @@ def main() -> None:
         print("No data from HFTorrent or similar repository availible to analyze. Please create a directory called repos and place the repositories to analyze in it")
         quit(1)
 
-    dirs: list = next(os.walk("repos"))[1]
+    dirs: list| StopIteration = next(os.walk("repos"))[1]
+
+    if type(dirs) == StopIteration:
+        print("No data from HFTorrent or similar repository availible to analyze. Please add repositories the repos folder to be analyzed")
+        quit(2)
+
     with Bar("Running Commands", max=len(dirs)) as bar:
         dir: str
         for dir in dirs:
@@ -35,12 +40,16 @@ def main() -> None:
                 reposWithSignedCommits.append(dir)
             bar.next()
 
-    with open("verifiedOrganizations.txt", "r") as vo:
-        data: list = vo.readlines()
-        data = [
-            d.strip().replace("-", " ").replace("_", " ").split("/")[-1] for d in data
-        ]
-        vo.close()
+    try:
+        with open("verifiedOrganizations.txt", "r") as vo:
+            data: list = vo.readlines()
+            data = [
+                d.strip().replace("-", " ").replace("_", " ").split("/")[-1] for d in data
+            ]
+            vo.close()
+    except FileNotFoundError:
+        print("Please run icse-measure-verified-organizations prior to this command and name the verified organizations txt file as verifiedOrganizations.txt")
+        quit(2)
 
     d: str
     r: str
