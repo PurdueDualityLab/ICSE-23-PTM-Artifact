@@ -2,6 +2,10 @@
 
 > This is the artifact for the ICSE'23 paper: An Empirical Study of Pre-Trained Model Reuse in the Hugging Face Deep Learning Model Registry
 
+## Update 2/9/2023
+
+We now provide a VirtualBox 7 VM to install and run this software. The VM's image can be downloaded at https://doi.org/10.5281/zenodo.7623127
+
 ## About
 
 This repository contains all of the elements of the paper.
