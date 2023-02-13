@@ -2,7 +2,7 @@
 <!-- An INSTALL file with installation instructions. These instructions should include notes illustrating a very basic usage example or a method to test the installation. This could be, for instance, on what output to expect that confirms that the code is installed and working; and the code is doing something interesting and useful.
 
  -->
- 
+
 > How to install, build, and run our software and download our data
 
 ## VM Image
@@ -24,6 +24,20 @@ Please execute:
 The HFTorrent dataset is divided into 19 parts of ~20 GB each.
 Please use an extractor capable of extracting `7z` archives to unpack the dataset.
 
+### Extract Dataset
+
+> NOTE: These steps assume that you are running on Linux and have installed the [Homebrew](https://brew.sh) package manager
+
+Run the following commands to extract the dataset:
+
+```shell
+brew install p7zip
+7z x $PATH_TO_COMPRESSED_HFTORRENT/HFTorrent.001
+```
+
+Where `$PATH_TO_COMPRESSED_HFTORRENT` is the directory where the compressed HFTorrent files are stored.
+This command will extract the data to a directory called `repos` within the directory that the command was ran in.
+
 ## Build From Source
 
 The Python code in this repository can be ran as individual scripts, or bundled into a package to be installed on your local machine.
@@ -36,7 +50,7 @@ Install `poetry` with:
 
 Then execute (within the top level of the source code):
 
-`poetry build` 
+`poetry build`
 
 From there, you can utilize `pip` to install a `.whl` or `.tar.gz` Python package from the newly created `dist` directory.
 
