@@ -28,6 +28,8 @@ Please use an extractor capable of extracting `7z` archives to unpack the datase
 
 > NOTE: These steps assume that you are running on Linux and have installed the [Homebrew](https://brew.sh) package manager
 
+> NOTE: The software to extract the data is included within the VM artifact and does not need to be reinstalled.
+
 Run the following commands to extract the dataset:
 
 ```shell
