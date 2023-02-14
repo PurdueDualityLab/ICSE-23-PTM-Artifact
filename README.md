@@ -6,6 +6,10 @@
 
 We now provide a VirtualBox 7 VM to install and run this software. The VM's image can be downloaded at https://doi.org/10.5281/zenodo.7623127
 
+## Update 2/13/2023
+
+We have added an [Extract Dataset](INSTALL#extract-dataset) section to the [INSTALL](INSTALL) document.
+
 ## About
 
 This repository contains all of the elements of the paper.
@@ -21,7 +25,7 @@ Our artifact includes the following (ordered by appearance in the paper):
 | Risk measurement | Measurements of potential risks in Hugging Face | Section VIII, especially Figure 6 and 7 | data/modelInformation_8-15-2022.csv, data/fullStratifiedSampleOfModels_8-10-2022.csv |icse_23_model_hub_artifact/downloadHTML, icse_23_model_hub_artifact/downloadModelInformation, icse_23_model_hub_artifact/measureRepositoriesWithSignedCommits, icse_23_model_hub_artifact/measureVerifiedOrganizations, icse_23_model_hub_artifact/modelDocumentation| icse_23_model_hub_artifact/plotData| | First measurements on potential risks in PTM registries|
 | HFTorrent Dataset | A dataset for 63,182 open-source PTM packages from Hugging Face model hub | Section IX |data/hftorrent_8-15-2022|icse_23_model_hub_artifact/downloadHFTorrent|| First snapshot of PTM packages | |
 
-We provide all *code* to collect data, analyze data, and generate charts for our paper in the [icse_23_model_hub_artifact](icse_23_model_hub_artifact/) folder. 
+We provide all *code* to collect data, analyze data, and generate charts for our paper in the [icse_23_model_hub_artifact](icse_23_model_hub_artifact/) folder.
 <!-- We have provided an installation package for our `Python` code made availible in our repository's release section. -->
 Helper bash scripts are also provided to assist with executing our code for batch jobs.
 
@@ -57,7 +61,7 @@ There are READMEs within each top-level folder for further information.
 ## HFTorrent Dataset
 
 The HFTorrent dataset contains the repository histories of the 63,182 PTM packages available on Hugging Face as of August 2022.
-They are provided as bare git clones (`git clone --bare`) to reduce space, resulting in a compressed footprint of ~20 GB. 
+They are provided as bare git clones (`git clone --bare`) to reduce space, resulting in a compressed footprint of ~20 GB.
 Each PTM package can be reconstructed to its most recent version, including the model card, architecture, weights, and other elements provided by the maintainers.
 Information about how to download the dataset and how to extract it can be found in the [INSTALL](INSTALL) document.
 
