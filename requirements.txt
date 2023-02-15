@@ -18,3 +18,4 @@ torchaudio
 pandas
 loguru
 poetry
+datasets
