@@ -13,7 +13,6 @@ progress
 bs4
 lxml
 numpy
-tensorflow
 torchaudio
 pandas
 loguru
