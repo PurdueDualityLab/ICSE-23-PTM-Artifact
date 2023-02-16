@@ -17,6 +17,7 @@ import pandas as pd
 from tqdm import tqdm
 import transformers
 import yaml
+import ndjson
 
 from loguru import logger
 
@@ -108,9 +109,9 @@ class Metric:
 
 class PTM:
     """a pretrained model repository on huggingface"""
-    with open("../../data/modelinfo.json", "r") as file:
+    with open("../../data/modelinfo.ndjson", "r") as file:
     # with open("./reproducibility/results.json", "r") as file:
-        data = json.load(file)
+        data = ndjson.load(file)
     data = {m["id"]: m for m in data}
     print("loaded local data")
 
@@ -122,7 +123,7 @@ class PTM:
     except:
         config = {"ignore": [], "path": config_path}
 
-    api = HfApi()
+    # api = HfApi()
     ptms = []
     approved = {"datasets": ["imagenet-1k", "cifar10", "cifar100", "beans"]}
 
@@ -373,7 +374,9 @@ class PTM:
 
         with ThreadPoolExecutor() as ex:
             ptms = list(tqdm(ex.map(PTM, ids), total=len(ids)))
+            logger.debug(f"after ThreadPoolExecutor{len(ptms)}")
             ptms = [p for p in ptms if p]
+            logger.debug(f"Final {len(ptms)}")
 
         print(f"loaded {len(ptms)} ptms")
         return ptms
@@ -387,10 +390,11 @@ class PTM:
         return ""
 
 def plot_fig6():
-    """generates figure 5"""
+    """generates figure 6"""
 
-    PTM.load([m.id for m in PTM.api.list_models()])
-
+    # PTM.load([m.id for m in PTM.api.list_models()])
+    PTM.load()
+    
     tasks = set([p.task for p in PTM.ptms])
 
     hist = {t: {"claimed": 0, "claimless": 0} for t in tasks}
@@ -436,8 +440,13 @@ def plot_fig6():
     plt.xticks([0.05, 0.1, 0.15, 0.2], ["5%", "10%", "15%", "20%"])
     plt.tight_layout()
 
+<<<<<<< HEAD
+    plt.savefig("fig7.png")
+    plt.savefig("fig7.pdf")
+=======
     plt.savefig("figure7.png")
     plt.savefig("figure7.pdf")
+>>>>>>> main
 
 def main():
 
@@ -534,8 +543,13 @@ def main():
     plt.legend()
 
     plt.tight_layout()
+<<<<<<< HEAD
+    plt.savefig("fig6.png")
+    plt.savefig("fig6.pdf")
+=======
     plt.savefig("figure6.png")
     plt.savefig("figure6.pdf")
+>>>>>>> main
 
 if __name__ == '__main__':
     main()
