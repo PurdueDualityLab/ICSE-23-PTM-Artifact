@@ -123,7 +123,7 @@ class PTM:
     except:
         config = {"ignore": [], "path": config_path}
 
-    api = HfApi()
+    # api = HfApi()
     ptms = []
     approved = {"datasets": ["imagenet-1k", "cifar10", "cifar100", "beans"]}
 
@@ -440,7 +440,8 @@ def plot_fig6():
     plt.xticks([0.05, 0.1, 0.15, 0.2], ["5%", "10%", "15%", "20%"])
     plt.tight_layout()
 
-    plt.show()
+    plt.savefig("fig7.png")
+    plt.savefig("fig7.pdf")
 
 def main():
     
@@ -537,8 +538,8 @@ def main():
     plt.legend()
 
     plt.tight_layout()
-    plt.show()
-    plt.pause(4)
+    plt.savefig("fig6.png")
+    plt.savefig("fig6.pdf")
 
 if __name__ == '__main__': 
     main()
