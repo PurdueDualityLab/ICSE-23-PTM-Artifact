@@ -1,25 +1,25 @@
-from argparse import ArgumentParser as AP
-from concurrent.futures import ThreadPoolExecutor
 import functools
-from functools import reduce
 import json
 import os
-from pprint import pprint
 import re
 import time
+from argparse import ArgumentParser as AP
+from concurrent.futures import ThreadPoolExecutor
+from functools import reduce
+from pprint import pprint
 
 import datasets
-from huggingface_hub import HfApi
-from huggingface_hub.utils._errors import RepositoryNotFoundError
 import matplotlib.pyplot as plt
+import ndjson
 import numpy as np
 import pandas as pd
-from tqdm import tqdm
 import transformers
 import yaml
-import ndjson
-
+from huggingface_hub import HfApi
+from huggingface_hub.utils._errors import RepositoryNotFoundError
 from loguru import logger
+from tqdm import tqdm
+
 
 def reduce_li(li):
     """reduces a list of lists to a list of items"""
@@ -33,7 +33,6 @@ def keyquit(func):
     def deco(func):
         @functools.wraps(func)
         def wrap(*args, **kwargs):
-
             try:
                 result = func(*args, **kwargs)
                 return result
@@ -59,7 +58,6 @@ class Metric:
     """a metric result"""
 
     def __init__(self, *, info, dataset, task, ptms):
-
         self.name = info["name"]
         self.type = info["type"]
         self.value = float(info["value"])
@@ -79,7 +77,6 @@ class Metric:
         self.ptms = ptms
 
     def __repr__(self):
-
         return f"<METRIC {self.dataset['name']}: {round(self.value,4)} {self.name}>"
 
     def comparable(self, other):
@@ -87,7 +84,11 @@ class Metric:
 
         if isinstance(other, Metric):
             return all(
-                [self.dataset == other.dataset, self.task == other.task, self.name == other.name]
+                [
+                    self.dataset == other.dataset,
+                    self.task == other.task,
+                    self.name == other.name,
+                ]
             )
         return False
 
@@ -109,8 +110,9 @@ class Metric:
 
 class PTM:
     """a pretrained model repository on huggingface"""
+
     with open("../../data/modelinfo.ndjson", "r") as file:
-    # with open("./reproducibility/results.json", "r") as file:
+        # with open("./reproducibility/results.json", "r") as file:
         data = ndjson.load(file)
     data = {m["id"]: m for m in data}
     print("loaded local data")
@@ -134,11 +136,15 @@ class PTM:
         # modelinfo
         try:
             self.modelinfo = PTM.data[id]  #  else PTM.api.model_info(id).__dict__
-            self.downloads = self.modelinfo["downloads"] if "downloads" in self.modelinfo else None
+            self.downloads = (
+                self.modelinfo["downloads"] if "downloads" in self.modelinfo else None
+            )
             self.task = self.modelinfo["pipeline_tag"]
             # self.dataset = [ t.replace("dataset:", "") for t in self.modelinfo["tags"] if "dataset:" in t ]
             self.license = [t for t in self.modelinfo["tags"] if "license:" in t]
-            self.carddata = self.modelinfo["cardData"] if "cardData" in self.modelinfo else None
+            self.carddata = (
+                self.modelinfo["cardData"] if "cardData" in self.modelinfo else None
+            )
 
             # just yaml claims and metadata right now
             self.claims = self.get_claims()
@@ -158,7 +164,9 @@ class PTM:
         """return True if repo contains a certain metric"""
 
         return (
-            metric in reduce_li([[m.name, m.type] for m in self.claims]) if self.claims else False
+            metric in reduce_li([[m.name, m.type] for m in self.claims])
+            if self.claims
+            else False
         )
 
     def ignore(self):
@@ -281,7 +289,8 @@ class PTM:
                 assert type(dataset) is dict
 
                 metrics += [
-                    Metric(info=m, dataset=dataset, task=task, ptms=self) for m in r["metrics"]
+                    Metric(info=m, dataset=dataset, task=task, ptms=self)
+                    for m in r["metrics"]
                 ]
 
             return metrics
@@ -292,7 +301,7 @@ class PTM:
     def validate(self):
         """returns discrepancies between claims"""
 
-        ''' suggestion from autoeval.py
+        """ suggestion from autoeval.py
         parse task
         if no task then quit
 
@@ -305,7 +314,7 @@ class PTM:
 
         eval model
         compare results
-        '''
+        """
 
         # look for metric in appropriate results/<task>.json file
 
@@ -322,10 +331,11 @@ class PTM:
         print(self)
 
         for c in [c for c in self.claims if "tatoeba_mt" in c.ds_type]:
-
             try:
                 args = [a for a in [c.ds_type, c.ds_config, c.ds_args] if a]
-                args = [a for a in ["Helsinki-NLP/tatoeba_mt", c.ds_config, c.ds_args] if a]
+                args = [
+                    a for a in ["Helsinki-NLP/tatoeba_mt", c.ds_config, c.ds_args] if a
+                ]
                 kwargs = {"split": c.ds_split} if c.ds_split else {}
                 data = datasets.load_dataset(*args, **kwargs)
 
@@ -366,7 +376,7 @@ class PTM:
     def load(cls, ids=None, file=None):
         """loads available ptms repos or repos in ids"""
 
-        assert not (ids and file), 'it doesnt do both'
+        assert not (ids and file), "it doesnt do both"
 
         print("loading ptms...")
         ids = list(cls.data.keys()) if not ids else ids
@@ -382,19 +392,19 @@ class PTM:
         return ptms
 
     def __repr__(self):
-
         keys = ["task", "claims", "downloads"]
         values = [self.__dict__[k] for k in keys]
         print(f"<PTM> {self.id}")
         pprint({k: v for k, v in zip(keys, values)})
         return ""
 
+
 def plot_fig6():
     """generates figure 6"""
 
     # PTM.load([m.id for m in PTM.api.list_models()])
     PTM.load()
-    
+
     tasks = set([p.task for p in PTM.ptms])
 
     hist = {t: {"claimed": 0, "claimless": 0} for t in tasks}
@@ -435,21 +445,18 @@ def plot_fig6():
         h, w = rect.get_height(), rect.get_width()
         # w = 0-plt.gcf().get_figwidth()
         x, y = rect.get_x(), rect.get_y()
-        plt.text(x + w, y, f"{int(ratio*total)}/{total}", ha="left", va="bottom", fontsize=11)
+        plt.text(
+            x + w, y, f"{int(ratio*total)}/{total}", ha="left", va="bottom", fontsize=11
+        )
 
     plt.xticks([0.05, 0.1, 0.15, 0.2], ["5%", "10%", "15%", "20%"])
     plt.tight_layout()
 
-<<<<<<< HEAD
-    plt.savefig("fig7.png")
-    plt.savefig("fig7.pdf")
-=======
     plt.savefig("figure7.png")
     plt.savefig("figure7.pdf")
->>>>>>> main
+
 
 def main():
-
     # PTM.load()
     # PTM.ptms = [p for p in PTM.ptms if p.id in models]
     plot_fig6()
@@ -483,7 +490,7 @@ def main():
         hist["other"] = other
 
     keys, values = [x for x in zip(*sorted(hist.items(), key=lambda x: x[1]))]
-    values = [100*v/sum(values) for v in values]
+    values = [100 * v / sum(values) for v in values]
     # remove author from datasets
     keys = [x.split("/")[1] if "/" in x else x for x in keys]
     # keys = [x.replace("_","\n") for x in keys]
@@ -492,11 +499,17 @@ def main():
 
     # axs[0].barh(keys, values)
 
-    ax.barh([i*2 for i in range(len(values))], values, label='dataset')
+    ax.barh([i * 2 for i in range(len(values))], values, label="dataset")
     for i, v in enumerate(values):
-        ax.text(v, 2*i, f'{v:.1f}', verticalalignment='center', size=fontsize)
+        ax.text(v, 2 * i, f"{v:.1f}", verticalalignment="center", size=fontsize)
 
-    mtype = lambda p: p.modelinfo['config']['model_type'] if p.modelinfo and p.modelinfo['config'] and 'model_type' in p.modelinfo['config'] else "None"
+    mtype = (
+        lambda p: p.modelinfo["config"]["model_type"]
+        if p.modelinfo
+        and p.modelinfo["config"]
+        and "model_type" in p.modelinfo["config"]
+        else "None"
+    )
 
     names = [mtype(p) for p in ptms]
 
@@ -518,38 +531,34 @@ def main():
         hist["other"] = other
 
     keys, values = [x for x in zip(*sorted(hist.items(), key=lambda x: x[1]))]
-    values = [100*v/sum(values) for v in values]
+    values = [100 * v / sum(values) for v in values]
     # remove author from datasets
     keys = [x.split("/")[1] if "/" in x else x for x in keys]
     pprint(hist)
 
-    ticks = [[b,a] for a,b in zip(ticks,keys)]
+    ticks = [[b, a] for a, b in zip(ticks, keys)]
     ticks = [i for j in ticks for i in j]
 
     # axs[1].barh(keys, values)
 
-    ax.barh([i*2-1 for i in range(len(values))], values, label='architecture')
+    ax.barh([i * 2 - 1 for i in range(len(values))], values, label="architecture")
     for i, v in enumerate(values):
-        ax.text(v, 2*i-1, f'{v:.1f}', verticalalignment='center', size=fontsize)
+        ax.text(v, 2 * i - 1, f"{v:.1f}", verticalalignment="center", size=fontsize)
 
-    ax.set_xscale('log')
-    for spine in ['top', 'right']:
+    ax.set_xscale("log")
+    for spine in ["top", "right"]:
         ax.spines[spine].set_visible(False)
 
-    plt.yticks([i for i in range(-1,len(ticks)-1)],ticks, fontsize=fontsize)
+    plt.yticks([i for i in range(-1, len(ticks) - 1)], ticks, fontsize=fontsize)
 
-    xticks = [1,10,100]
-    plt.xticks(xticks, [f'{x}%' for x in xticks], fontsize=fontsize)
+    xticks = [1, 10, 100]
+    plt.xticks(xticks, [f"{x}%" for x in xticks], fontsize=fontsize)
     plt.legend()
 
     plt.tight_layout()
-<<<<<<< HEAD
-    plt.savefig("fig6.png")
-    plt.savefig("fig6.pdf")
-=======
     plt.savefig("figure6.png")
     plt.savefig("figure6.pdf")
->>>>>>> main
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
