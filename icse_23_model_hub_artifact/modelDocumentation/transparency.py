@@ -470,75 +470,18 @@ def main():
     tempids = [m.id for m in PTNN.api.list_models()]
 
     # tempids = [m.id for m in PTNN.api.list_models(filter="image-classification")]
-<<<<<<< HEAD:motivation/transparency.py
 
     # temp2 = set([m.id for m in PTNN.api.list_models(filter="imagenet")])
     # tempids = [t for t in tempids if t in temp2]
 
-=======
->>>>>>> 5ff73496f09d171ad0fc572b263861f01818a1b3:icse_23_model_hub_artifact/motivation/transparency.py
     # tempids = [m.id for m in PTNN.api.list_models(filter="object-detection")]
 
     # tasks = ["automatic-speech-recognition", "reinforcement-learning", "text-classification", "fill-mask", "text-generation"]
 
     PTNN.load(tempids)
-<<<<<<< HEAD:motivation/transparency.py
-
-    print(len(PTNN.ptnns))
-    quit()
-
-    
-    # PTNN.show_tasks()
-
-    'Figure 11'
-
-    with open('../reproducibility/results/sentiment_analysis.json','r') as file:
-        results = json.load(file)['results']
-        models = list(results.keys())
-        results = {k:v['f1-micro'] for k,v in results.items()}
-
-    PTNN.ptnns = [p for p in PTNN.ptnns if p.id in models]
-    # PTNN.ptnns = [p for p in PTNN.ptnns if p.claims]
-
-    data = {m:{'results':results[m]} for m in models}
-    for p in PTNN.ptnns:
-        data[p.id]['ptnn'] = p
-
-    n =0
-    errs = []
-    for k,d in data.items():
-        r = d['results']
-        try:
-            c = [c.value for c in d['ptnn'].claims if 'accuracy' == c.type]
-            if len(c) == 1:
-                c = c[0]
-                errs.append([k, c-r])
-                if c-r > 0.1:
-                    print(k)
-                    print(c,r)
-        except:
-            pass
-
-    errs.sort(key=lambda x:x[1])
-    # pprint(errs)
-
-    quit()
-
-
-    'Figure 5'
-
-    tasks = set([p.task for p in PTNN.ptnns])
-
-    # ntasks = {t:0 for t in tasks}
-    # for p in PTNN.ptnns:
-        # ntasks[p.task] += 1
-    # ntasks = {k:v/len(PTNN.ptnns) for k,v in ntasks.items()}
-
-=======
     # PTNN.show_tasks()
 
     tasks = set([p.task for p in PTNN.ptnns])
->>>>>>> 5ff73496f09d171ad0fc572b263861f01818a1b3:icse_23_model_hub_artifact/motivation/transparency.py
     hist = {t: {"claimed": 0, "claimless": 0} for t in tasks}
 
     for p in PTNN.ptnns:
@@ -553,41 +496,10 @@ def main():
         total = v['claimed'] + v['claimless']
         hist[k] = [ratio,total]
 
-<<<<<<< HEAD:motivation/transparency.py
-    others,claims, delete = [],[],[]
-    for k,v in hist.items():
-        if v[0] < 0.001:
-            claims.append(v[0]*v[1])
-            others.append(v[1])
-            delete.append(k)
-    hist['other'] = [sum(claims)/sum(others),sum(others)]
-    for d in delete:
-        del hist[d]
-
-=======
->>>>>>> 5ff73496f09d171ad0fc572b263861f01818a1b3:icse_23_model_hub_artifact/motivation/transparency.py
     keys, values = [x for x in zip(*sorted(hist.items(), key=lambda x: x[1][0]))]
     totals = [v[1] for v in values]
     values = [v[0] for v in values]
 
-<<<<<<< HEAD:motivation/transparency.py
-    ax = plt.gca()
-    ax.tick_params(axis='both', which='major', labelsize=12)
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-
-
-    bars = plt.barh(keys, values)
-    for rect,ratio,total in zip(bars,values,totals):
-        h, w = rect.get_height(), rect.get_width()
-        # w = 0-plt.gcf().get_figwidth()
-        x,y = rect.get_x(), rect.get_y()
-        plt.text(x+w, y, f'{int(ratio*total)}/{total}', ha="left", va="bottom", fontsize=12)
-
-    plt.xticks([0.05,0.1,0.15,0.2],["5%","10%","15%","20%"])
-    plt.tight_layout()
-
-=======
     bars = plt.barh(keys, values)
     for rect,ratio,total in zip(bars,values,totals):
         h, w = rect.get_height(), rect.get_width()
@@ -596,7 +508,6 @@ def main():
 
     plt.tight_layout()
     plt.xticks([0.05,0.1,0.15,0.2],["5%","10%","15%","20%"])
->>>>>>> 5ff73496f09d171ad0fc572b263861f01818a1b3:icse_23_model_hub_artifact/motivation/transparency.py
     plt.show()
     quit()
 

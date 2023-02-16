@@ -18,3 +18,4 @@ pandas
 loguru
 poetry
 datasets
+ndjson
