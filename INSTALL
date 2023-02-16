@@ -46,9 +46,9 @@ The Python code in this repository can be ran as individual scripts, or bundled 
 
 We utlized the `poetry` build tool to create Python packages of our code.
 
-Install `poetry` with:
+Install `poetry` and all dependencies with:
 
-`pip install poetry`
+`pip install -r requirements.txt`
 
 Then execute (within the top level of the source code):
 
@@ -57,6 +57,8 @@ Then execute (within the top level of the source code):
 From there, you can utilize `pip` to install a `.whl` or `.tar.gz` Python package from the newly created `dist` directory.
 
 ## Install Precompiled Package
+
+> NOTE: We recommend installing all dependencies if you install from our packages. Please install from the `requirements.txt` file. See [Build From Source](#build-from-source) for more information.
 
 We published precompiled packages of our tools through this repositories GitHub releases page.
 
