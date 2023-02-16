@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "icse-23-model_hub_artifact"
 authors = []
-version = "0.1.4"
+version = "0.1.5"
 description = "Code artifacts for ICSE 2023 "
 license = "Apache 2.0"
 
+<<<<<<< HEAD
 [tool.poetry.dependencies]
 python = ">=3.8, <3.11"
 torch = "^1.12.1"
@@ -33,6 +34,8 @@ black = "^22.6.0"
 isort = "^5.10.1"
 autoflake = "^1.5.2"
 
+=======
+>>>>>>> main
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

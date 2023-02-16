@@ -440,11 +440,16 @@ def plot_fig6():
     plt.xticks([0.05, 0.1, 0.15, 0.2], ["5%", "10%", "15%", "20%"])
     plt.tight_layout()
 
+<<<<<<< HEAD
     plt.savefig("fig7.png")
     plt.savefig("fig7.pdf")
+=======
+    plt.savefig("figure7.png")
+    plt.savefig("figure7.pdf")
+>>>>>>> main
 
 def main():
-    
+
     # PTM.load()
     # PTM.ptms = [p for p in PTM.ptms if p.id in models]
     plot_fig6()
@@ -452,7 +457,7 @@ def main():
 
     fontsize = 12
 
-    ptms = PTM.ptms 
+    ptms = PTM.ptms
     fig, ax = plt.subplots()
     # fig, axs = plt.subplots(1,2)
 
@@ -538,8 +543,13 @@ def main():
     plt.legend()
 
     plt.tight_layout()
+<<<<<<< HEAD
     plt.savefig("fig6.png")
     plt.savefig("fig6.pdf")
+=======
+    plt.savefig("figure6.png")
+    plt.savefig("figure6.pdf")
+>>>>>>> main
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     main()
