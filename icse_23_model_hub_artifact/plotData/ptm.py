@@ -17,6 +17,7 @@ import pandas as pd
 from tqdm import tqdm
 import transformers
 import yaml
+import ndjson
 
 from loguru import logger
 
@@ -108,9 +109,9 @@ class Metric:
 
 class PTM:
     """a pretrained model repository on huggingface"""
-    with open("../../data/modelinfo.json", "r") as file:
+    with open("../../data/modelinfo.ndjson", "r") as file:
     # with open("./reproducibility/results.json", "r") as file:
-        data = json.load(file)
+        data = ndjson.load(file)
     data = {m["id"]: m for m in data}
     print("loaded local data")
 
@@ -373,7 +374,9 @@ class PTM:
 
         with ThreadPoolExecutor() as ex:
             ptms = list(tqdm(ex.map(PTM, ids), total=len(ids)))
+            logger.debug(f"after ThreadPoolExecutor{len(ptms)}")
             ptms = [p for p in ptms if p]
+            logger.debug(f"Final {len(ptms)}")
 
         print(f"loaded {len(ptms)} ptms")
         return ptms
@@ -387,10 +390,11 @@ class PTM:
         return ""
 
 def plot_fig6():
-    """generates figure 5"""
+    """generates figure 6"""
 
-    PTM.load([m.id for m in PTM.api.list_models()])
-
+    # PTM.load([m.id for m in PTM.api.list_models()])
+    PTM.load()
+    
     tasks = set([p.task for p in PTM.ptms])
 
     hist = {t: {"claimed": 0, "claimless": 0} for t in tasks}
